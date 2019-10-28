@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+ 
+	<head>
+		<h1 class="title">文章列表</h1>		
+	</head>
+ 
+ 	<body>
+ 		<center>
+ 		 <table>
+	 		<td>
+	 			<tbody>
+	 			<tr th:each="article:${articleList}">
+	 				<td><a th:href="@{'/article/detail/'+${article.id}}" th:text="${article.title}"></a></td>
+	 				<td><span th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')}"></span></td>
+	 			</tr>
+	 			</tbody>
+			</td>
+			</table>
+	      </center>
+        
+        <div>
+ 			<br></br><a href="../page/home">home</a>
+ 		</div>
+ 		
+ 		<style>
+ 			h1.title {
+ 				text-align: center;
+ 			}
+ 			div{
+ 				height:50px;
+ 				text-align: center;
+			    display: block;
+			    margin:0 auto;
+			}
+			table{
+				cellspacing="100"
+			}
+ 		</style>	
+ 	</body>
+ 	 
+ </html>

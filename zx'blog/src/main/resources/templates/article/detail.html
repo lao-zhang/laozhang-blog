@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		
+	</head>
+	
+	<body th:inline="text" onload="load();">
+		<div class="title">
+			 <strong><font size="6" th:text="${article.title}"></font></strong>
+		</div>
+		<br></br><br></br>
+		<div class="date">
+			<font size ="2" th:text="${#dates.format(article.createTime,'yyyy-MM-dd HH:mm:ss')}"></font>
+		</div>
+		<br></br><br></br>
+		<div class="content">
+		 	<span class="text" th:utext="${article.content}"></span>
+		</div>
+		
+		<script>
+			var num1 = 0;
+			var num2 = 0;
+			document.onkeydown = function()
+			{
+				var id = [[${article.id}]];
+				var act1 = "next";
+				var act2 = "last";
+				var oEvent = window.event;
+				if (oEvent.keyCode == 39) {
+					num1 ++;	
+				}else if(oEvent.keyCode == 37){
+					num2 ++;
+				}else if(oEvent.keyCode == 8){
+					window.location = "/article/articleList";				
+				}
+				if(num1==2){
+					window.location = "/article/pageTurn/"+act1+"_"+id;
+				}else if(num2==2){
+					window.location = "/article/pageTurn/"+act2+"_"+id;
+				}
+				
+			}
+			
+			function load(){
+				var message = "[[${message}]]";
+				if(message!="null")
+					if(message!=""){
+						alert(message);
+				}
+			}
+		</script>
+		
+		<style>
+ 			div.title {
+ 				text-align: center;
+ 				margin-top: 50px;
+ 			}
+ 			div.content{
+ 				margin:0 auto;
+	            width:800px;
+       		}
+       		span.text{
+       			font-size:14px;
+       		}
+       		div.date{
+       			float:right;
+       			margin-right:30%;
+       		}
+ 		</style>		 
+	</body>
+
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zx.blog.mapper.ArticleMapper">
+
+	 <select id="queryCount" resultType="Integer">
+        SELECT count(1) FROM article
+    </select>
+    
+    <insert id="addAtricle">
+    	insert into article(id,title,content,createTime,updateTime) values(#{id},#{title},#{content},#{createTime},#{updateTime})
+    </insert>
+
+	<select id="queryAllArticles" resultType="com.zx.blog.bean.Article"> 
+		select id,title,createTime from article order by createTime desc;
+	</select>
+	
+	<select id="queryArticleById" parameterType="String" resultType ="com.zx.blog.bean.Article">
+		select id,title,content,createTime from article where id = #{id}	
+	</select>
+	
+</mapper>

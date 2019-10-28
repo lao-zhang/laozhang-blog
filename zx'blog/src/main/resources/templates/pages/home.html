@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+  <html lang="en">
+	<head>
+   		<h1 class="title">Index page</h1>	
+	</head>
+	<body>
+		
+		<div class="navigation">
+			<a href="../page/editor">创建</a>&nbsp;&nbsp;
+			<a href="../article/articleList">查看</a>
+		</div>
+	
+		<script>
+			var num = 0;
+			document.onkeydown = function()
+			{
+				var oEvent = window.event;
+				if (oEvent.keyCode == 39) {
+					num ++;
+					if(num==2){
+						window.location = "http://www.baidu.com"
+					}
+				}	
+			}
+		</script>
+		
+		<style type="text/css">
+		
+ 		h1.title {
+ 			text-align: center;
+ 		}
+ 		div.navigation {
+ 			text-align: center;
+ 			margin: 0 auto;
+ 		}
+ 		</style>
+ 		
+	</body>
+</html>
